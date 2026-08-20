@@ -1,0 +1,172 @@
+/* Fondo general */
+.bg-corporate {
+  background-color: #f4f6f9;
+}
+
+/* Navbar oscuro corporativo */
+.bg-corporate-dark {
+  background-color: #2e2f30;
+}
+
+/* Tarjeta principal */
+.corporate-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.corporate-card-register {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 8px;
+  border: 1px solid #e3e6f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Botón principal */
+.btn-corporate {
+  background-color: #2e2f30;
+  color: #fff;
+  border: none;
+}
+
+.btn-corporate:hover {
+  background-color: #162d66;
+  color: #fff;
+}
+
+/* Inputs */
+.form-control:focus {
+  border-color: #1f3c88;
+  box-shadow: 0 0 0 0.15rem rgba(31, 60, 136, 0.25);
+}
+
+/* Navbar links planos integrados al menú */
+.navbar .nav-link-flat {
+  color: #fff; /* texto blanco */
+  text-decoration: none;
+  margin-left: 1rem;
+  padding: 0.5rem 0; /* solo padding vertical para que se vea alineado */
+  font-weight: 500;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent; /* efecto de subrayado */
+}
+
+.navbar .nav-link-flat:hover {
+  color: #f0f0f0;
+  border-bottom: 2px solid #fff; /* subrayado al hover */
+}
+
+.navbar .nav-link-flat.active {
+  color: #fff;
+  border-bottom: 2px solid #1f3c88; /* subrayado activo azul corporativo */
+}
+
+
+/*INDEX.HTML*/
+/* Hero parallax */
+.hero-parallax {
+  background-image: url('Img/siniestro.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-parallax {
+  background-image: url('Img/siniestro.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+
+/* Overlay semi-transparente para mejorar legibilidad */
+.hero-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 60, 136, 0.5); /* azul corporativo */
+  z-index: 1;
+}
+
+.hero-parallax .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Secciones */
+.section-title {
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.card-service {
+  transition: transform 0.3s;
+}
+
+.card-service:hover {
+  transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  color: #6c757d;
+}
+
+/*SOPORTE*/
+.support-header {
+      padding: 4rem 2rem;
+      background-image: url('Img/Callcenter.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      text-align: center;
+      margin-bottom: 2rem;
+      border-radius: 6px;
+    }
+
+    .support-card {
+      border-radius: 6px;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background-color: #fff;
+    }
+
+/*BUSQUEDA*/
+ .search-bar {
+      max-width: 600px;
+      margin: 2rem auto 1rem auto;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .card-siniestro {
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .no-results {
+      text-align: center;
+      margin-top: 2rem;
+      color: #6c757d;
+    }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema de Gestión de Siniestros</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="styleInicioSesion.css">
+</head>
+<body>
+
+  <!-- HEADER SUPERIOR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-corporate-dark px-4">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="Img/Logo.png" alt="Logo Empresa" height="100" class="me-2">
+          <span class="fw-semibold">Sistema de Gestión de Siniestros</span>
+        </a>
+
+      <div class="ms-auto">
+        <a href="index.html" class="btn btn-outline-light btn-sm me-2">
+          Página Principal
+        </a>
+        <a href="Registro.html" class="btn btn-light btn-sm">
+          Registrar Cliente
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-corporate">
+    
+    <section class="card corporate-card shadow-sm">
+      
+      <header class="card-header text-center bg-white border-0 pt-4">
+        <h1 class="h4 fw-bold text-dark">Acceso al Sistema</h1>
+        <p class="text-muted small mb-0">Ingrese sus credenciales</p>
+      </header>
+
+      <div class="card-body p-4">
+
+        <form action="login.php" method="POST">
+
+          <div class="mb-3">
+            <label class="form-label">Usuario / Correo electrónico</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">Contraseña</label>
+            <input type="password" name="password" class="form-control" required>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-corporate">
+              Ingresar
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+      <div class="modal fade" id="loginError" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header bg-danger text-white">
+              <h5 class="modal-title">Error</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              Usuario o contraseña incorrectos
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <footer class="card-footer text-center small text-muted bg-white border-0 pb-3">
+        © 2026 Departamento de Siniestros
+      </footer>
+
+    </section>
+
+  </main>
+  <script src="public/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("error")) {
+      const modal = new bootstrap.Modal(document.getElementById("loginError"));
+      modal.show();
+    }
+  </script>
+  
+</body>
+</html>

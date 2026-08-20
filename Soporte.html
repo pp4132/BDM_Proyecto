@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soporte - Sistema de Gestión de Siniestros</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styleInicioSesion.css">
+
+</head>
+<body class="bg-corporate">
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-corporate-dark fixed-top px-4">
+  <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <img src="Img/Logo.png" alt="Logo Empresa" height="100" class="me-2">
+    <span>Sistema de Gestión de Siniestros</span>
+  </a>
+  
+  <div class="ms-auto d-flex align-items-center">
+    <a href="index.html" class="nav-link-flat">Página Principal</a>
+    <a href="Soporte.html" class="nav-link-flat active">Soporte</a>
+  </div>
+</nav>
+</header>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="container mt-5 pt-5">
+
+  <!-- Encabezado de soporte -->
+  <div class="support-header">
+    <h1 class="display-5 fw-bold">Soporte</h1>
+    <p class="lead">Estamos aquí para ayudarte con cualquier consulta o inconveniente</p>
+  </div>
+
+  <!-- Tarjetas de contacto -->
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="support-card">
+        <h5>Teléfono</h5>
+        <p class="mb-0">+52 55 1234 5678</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="support-card">
+        <h5>Correo</h5>
+        <p class="mb-0">soporte@siniestros.com</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="support-card">
+        <h5>Redes Sociales</h5>
+        <p class="mb-0">
+          <a href="#" class="text-decoration-none text-primary me-2">Facebook</a>
+          <a href="#" class="text-decoration-none text-info me-2">Twitter</a>
+          <a href="#" class="text-decoration-none text-danger">Instagram</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Formulario de contacto rápido -->
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+      <div class="support-card">
+        <h5 class="fw-bold mb-3">Envíanos un mensaje</h5>
+        <form action="/contacto" method="POST">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-corporate">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-center mt-4 mb-3 text-muted">
+  © 2026 Departamento de Siniestros
+</footer>
+
+<script src="public/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
