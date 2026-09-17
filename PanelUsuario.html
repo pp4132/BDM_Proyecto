@@ -15,13 +15,13 @@
 
 <!-- NAVBAR -->
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-corporate-dark fixed-top px-4">
-    <a class="navbar-brand d-flex align-items-center" href="Index.html">
-      <img src="Img/Logo.png" alt="Logo Empresa" height="80" class="me-2">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-corporate-dark fixed-top px-4 shadow-sm">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="Img/Logo.png" alt="Logo Empresa" height="50" class="me-2">
       <span>Sistema de Gestión de Siniestros</span>
     </a>
     <div class="ms-auto">
-      <a href="Index.html" class="btn btn-outline-light btn-sm">Cerrar Sesión</a>
+      <a href="index.html" class="btn btn-outline-light btn-sm">Cerrar Sesión</a>
     </div>
   </nav>
 </header>
@@ -29,24 +29,28 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
   <!-- Información del usuario -->
-   <br><br>
   <div class="user-info">
     <img src="Img/usuario.png" alt="Foto Usuario">
     <h6>Nombre completo</h6>
     <small>Asegurado</small>
   </div>
 
-  <!-- Menú -->
-  <a href="PanelUsuario.html" class="active">Dashboard</a>
-  <a href="Siniestros.html">Mis Siniestros</a>
-  <a href="Busqueda.html">Buscar</a>
-  <a href="CrearSiniestro.php" class="active">
+  <!-- Menú (Con íconos corporativos agregados) -->
+  <a href="PanelUsuario.html" class="active">
+    <i class="bi bi-speedometer2"></i> Dashboard
+  </a>
+  <a href="Siniestros.html">
+    <i class="bi bi-file-earmark-text"></i> Mis Siniestros
+  </a>
+  <a href="Busqueda.html">
+    <i class="bi bi-search"></i> Buscar
+  </a>
+  <a href="CrearSiniestro.php">
     <i class="bi bi-plus-circle"></i> Crear Siniestro
   </a>
 </div>
 
 <!-- CONTENIDO PRINCIPAL -->
- <br><br>
 <div class="content">
   <h2 class="mb-4">Bienvenido, Nombre</h2>
 
@@ -79,40 +83,41 @@
   </div>
 
   <!-- Lista de siniestros -->
-  <h3 class="mb-3">Mis Siniestros</h3>
- <!-- FILTROS -->
-<div class="row mb-3">
-  <div class="col-md-3">
-    <select class="form-select" id="filtroOrden">
-      <option value="">Ordenar por</option>
-      <option value="asc">Fecha ascendente</option>
-      <option value="desc">Fecha descendente</option>
-    </select>
+  <h3 class="mb-3 mt-2">Mis Siniestros</h3>
+  
+  <!-- FILTROS -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <select class="form-select shadow-sm" id="filtroOrden">
+        <option value="">Ordenar por</option>
+        <option value="asc">Fecha ascendente</option>
+        <option value="desc">Fecha descendente</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-select shadow-sm" id="filtroEstado">
+        <option value="">Estado</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="proceso">En proceso</option>
+        <option value="cerrado">Cerrado</option>
+      </select>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <select class="form-select" id="filtroEstado">
-      <option value="">Estado</option>
-      <option value="pendiente">Pendiente</option>
-      <option value="proceso">En proceso</option>
-      <option value="cerrado">Cerrado</option>
-    </select>
-  </div>
-</div>
-
-<!-- LISTA -->
-<div class="row" id="listaSiniestros">
+  <!-- LISTA -->
+  <div class="row" id="listaSiniestros">
     <!-- Tarjeta ejemplo -->
     <div class="col-md-4 mb-3">
-      <div class="card card-siniestro shadow-sm">
+      <div class="card card-siniestro shadow-sm h-100">
         <div class="card-body">
-          <h5 class="card-title fw-bold">Siniestro #1234</h5>
-          <p>
-            Estado: 
-            <span class="badge bg-warning text-dark">En proceso</span>
+          <h5 class="card-title fw-bold mb-3">Siniestro #1234</h5>
+          <p class="mb-2">
+            <strong>Estado:</strong> 
+            <span class="badge bg-warning text-dark ms-1">En proceso</span>
           </p>
-          <p class="card-text">Fecha: 15/02/2026</p>
-          <a href="Siniestros.html" class="btn btn-corporate btn-sm">Ver Detalle</a>
+          <p class="card-text text-muted mb-4"><i class="bi bi-calendar-event me-1"></i> Fecha: 15/02/2026</p>
+          <a href="Siniestros.html" class="btn btn-corporate btn-sm w-100">Ver Detalle</a>
         </div>
       </div>
     </div>
