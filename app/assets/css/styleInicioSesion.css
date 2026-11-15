@@ -1,0 +1,257 @@
+/* Importación de fuente elegante únicamente para la marca */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap');
+
+/* ========================================= */
+/* CSS GENERAL Y DE INICIO - PALETA RENOVADA */
+/* ========================================= */
+
+/* Fondo general */
+.bg-corporate {
+  background-color: #FFFAFA; /* Color principal */
+}
+
+/* Navbar oscuro corporativo */
+.bg-corporate-dark {
+  background-color: #0D47A1; /* Color secundario */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombreado sutil */
+}
+
+/* Marca e Integración de Logo con Degradado */
+.navbar-brand img {
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(13, 71, 161, 0) 100%);
+  padding: 4px;
+  mix-blend-mode: lighten; /* Hace invisible el recuadro negro del logo sobre el azul */
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.navbar-brand img:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(13, 71, 161, 0.2) 100%);
+}
+
+/* Tipografía elegante exclusiva para el nombre de la empresa */
+.navbar-brand span {
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #FFFAFA;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Tarjeta principal */
+.corporate-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Sombreado mejorado */
+}
+
+.corporate-card-register {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Botón principal */
+.btn-corporate {
+  background-color: #0D47A1; /* Color secundario */
+  color: #FFFAFA;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-corporate:hover {
+  background-color: #083375; /* Tono más oscuro del secundario para hover */
+  color: #FFFAFA;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Inputs */
+.form-control {
+  background-color: #FFFAFA;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.form-control:focus {
+  border-color: #0D47A1;
+  box-shadow: 0 0 0 0.2rem rgba(13, 71, 161, 0.15); /* Foco con color corporativo */
+  background-color: #ffffff;
+}
+
+/* Navbar links planos integrados al menú */
+.navbar .nav-link-flat {
+  color: rgba(255, 255, 250, 0.8); /* texto claro */
+  text-decoration: none;
+  margin-left: 1rem;
+  padding: 0.5rem 0; 
+  font-weight: 500;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent; 
+}
+
+.navbar .nav-link-flat:hover {
+  color: #FFFAFA;
+  border-bottom: 2px solid #FFFAFA; 
+}
+
+.navbar .nav-link-flat.active {
+  color: #FFFAFA;
+  border-bottom: 2px solid #FFFAFA; 
+  font-weight: 600;
+}
+
+/* ========================================= */
+/* INDEX.HTML */
+/* ========================================= */
+
+body {
+  background-color: #FFFAFA;
+  color: #333333;
+}
+
+/* Hero parallax */
+.hero-parallax {
+  background-image: url('../Img/siniestro.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #FFFAFA;
+  text-align: center;
+}
+
+/* Overlay semi-transparente para mejorar legibilidad */
+.hero-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 71, 161, 0.75); /* Azul corporativo con opacidad */
+  z-index: 1;
+}
+
+.hero-parallax .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Secciones */
+.section-title {
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #0D47A1; /* Títulos en color secundario */
+}
+
+.card-service {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombreado suave */
+  transition: all 0.3s ease;
+}
+
+.card-service:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card-service .card-title {
+  color: #0D47A1;
+}
+
+/* Footer */
+footer {
+  background-color: #0D47A1;
+  padding: 1.5rem 0;
+  color: rgba(255, 255, 250, 0.8);
+  font-size: 0.9rem;
+}
+
+/* ========================================= */
+/* SOPORTE */
+/* ========================================= */
+.support-header {
+  padding: 5rem 2rem;
+  background-image: url('../Img/Callcenter.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: #FFFAFA;
+  text-align: center;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.support-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(13, 71, 161, 0.8);
+  z-index: 1;
+}
+
+.support-header h1, .support-header p {
+  position: relative;
+  z-index: 2;
+}
+
+.support-card {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.support-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================= */
+/* BUSQUEDA */
+/* ========================================= */
+.search-bar {
+  max-width: 600px;
+  margin: 2rem auto 2rem auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-bar .form-control {
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.search-bar .btn {
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 2rem;
+  color: #6c757d;
+}
