@@ -29,13 +29,20 @@ class Multimedia
         );
 
         if (!$stmt) {
-            throw new Exception("Error al preparar archivo multimedia.");
+            throw new Exception(
+                "Error al preparar archivo multimedia: " .
+                $this->conexion->error
+            );
         }
+
+        // IMPORTANTE:
+        // El parámetro 8 corresponde al contenido BLOB.
+        // Se enlaza como binario y se envía mediante send_long_data.
 
         $null = null;
 
         $stmt->bind_param(
-            "iiiissssi",
+            "iiiisssbi",
             $opcion,
             $idArchivo,
             $idSiniestro,
@@ -50,23 +57,33 @@ class Multimedia
         $stmt->send_long_data(7, $contenido);
 
         if (!$stmt->execute()) {
+
             $error = $stmt->error;
+
             $stmt->close();
-            throw new Exception($error);
+
+            throw new Exception(
+                "Error al guardar multimedia: " . $error
+            );
         }
 
         $resultado = $stmt->get_result();
-        $fila = $resultado ? $resultado->fetch_assoc() : null;
+
+        $fila = $resultado
+            ? $resultado->fetch_assoc()
+            : null;
 
         if ($resultado) {
             $resultado->free();
         }
 
         $this->limpiarResultados($stmt);
+
         $stmt->close();
 
         return $fila['id'] ?? false;
     }
+
 
     // Listar archivos por siniestro
     public function listarPorSiniestro($idSiniestro)
@@ -241,5 +258,58 @@ class Multimedia
             }
         }
     }
+
+    
+    // Obtener archivo verificando que pertenezca al siniestro
+    public function obtenerArchivoPorSiniestro(
+        $idArchivo,
+        $idSiniestro
+    ) {
+
+        $sql = "
+            SELECT
+                IdArchivo,
+                IdSiniestro,
+                NombreArchivo,
+                TipoMime,
+                Archivo
+            FROM multimedia
+            WHERE IdArchivo = ?
+            AND IdSiniestro = ?
+            LIMIT 1
+        ";
+
+        $stmt = $this->conexion->prepare($sql);
+
+        if (!$stmt) {
+            throw new Exception(
+                "Error al preparar descarga multimedia."
+            );
+        }
+
+        $stmt->bind_param(
+            "ii",
+            $idArchivo,
+            $idSiniestro
+        );
+
+        if (!$stmt->execute()) {
+            $stmt->close();
+
+            throw new Exception(
+                "No se pudo consultar el archivo."
+            );
+        }
+
+        $resultado = $stmt->get_result();
+
+        $archivo = $resultado->fetch_assoc();
+
+        $resultado->free();
+        $stmt->close();
+
+        return $archivo ?: null;
+    }
+
 }
 ?>

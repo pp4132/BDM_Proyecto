@@ -350,49 +350,112 @@
     </div>
     <?php endif; ?>
 
-    <!-- LISTAR MULTIMEDIA -->
+
+    <!-- LISTAR, DESCARGAR Y ELIMINAR MULTIMEDIA -->
     <div class="card mb-4 shadow-sm">
+
         <div class="card-header">
-            <strong>Eliminar multimedia</strong>
+            <strong>
+                <i class="bi bi-folder2-open"></i>
+                Archivos multimedia del siniestro
+            </strong>
         </div>
+
         <div class="card-body">
-            <ul class="list-group">
-                <?php foreach ($archivos as $file): ?>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+            <?php if (!empty($archivos)): ?>
 
-                    <?= htmlspecialchars($file['NombreArchivo']) ?>
+                <ul class="list-group">
 
-                    (<?= htmlspecialchars($file['TipoMime']) ?>)
+                    <?php foreach ($archivos as $file): ?>
 
-                    <form action="../controllers/MultimediaController.php"
-                        method="POST">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap gap-2">
 
-                        <input type="hidden" name="opcion" value="3">
+                            <div>
+                                <i class="bi bi-file-earmark"></i>
 
-                        <input type="hidden"
-                            name="idArchivo"
-                            value="<?= (int)$file['IdArchivo'] ?>">
+                                <strong>
+                                    <?= htmlspecialchars(
+                                        $file['NombreArchivo'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    ) ?>
+                                </strong>
 
-                        <input type="hidden"
-                            name="idSiniestro"
-                            value="<?= (int)$siniestro['IdSiniestro'] ?>">
+                                <br>
 
-                        <button type="submit"
-                                class="btn btn-sm btn-outline-danger"
-                                onclick="return confirm('¿Eliminar archivo?')">
+                                <small class="text-muted">
+                                    <?= htmlspecialchars(
+                                        $file['TipoMime'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    ) ?>
+                                </small>
+                            </div>
 
-                            Eliminar
+                            <div class="d-flex gap-2">
+                                <!-- DESCARGAR -->
+                                <a href="../controllers/MultimediaController.php?opcion=4&idArchivo=<?= (int)$file['IdArchivo'] ?>&idSiniestro=<?= (int)$siniestro['IdSiniestro'] ?>"
+                                class="btn btn-sm btn-outline-primary">
 
-                        </button>
+                                    <i class="bi bi-download"></i>
+                                    Descargar
 
-                    </form>
+                                </a>
 
-                </li>
+                                <!-- ELIMINAR -->
+                                <?php if (in_array(
+                                    $usuario['Rol'],
+                                    ['Supervisor', 'Ajustador'],
+                                    true
+                                )): ?>
 
-                <?php endforeach; ?>
-            </ul>
+                                    <form action="../controllers/MultimediaController.php"
+                                        method="POST">
+
+                                        <input type="hidden"
+                                            name="opcion"
+                                            value="3">
+
+                                        <input type="hidden"
+                                            name="idArchivo"
+                                            value="<?= (int)$file['IdArchivo'] ?>">
+
+                                        <input type="hidden"
+                                            name="idSiniestro"
+                                            value="<?= (int)$siniestro['IdSiniestro'] ?>">
+
+                                        <button type="submit"
+                                                class="btn btn-sm btn-outline-danger"
+                                                onclick="return confirm('¿Eliminar archivo?')">
+
+                                            <i class="bi bi-trash"></i>
+                                            Eliminar
+
+                                        </button>
+
+                                    </form>
+
+                                <?php endif; ?>
+
+                            </div>
+
+                        </li>
+
+                    <?php endforeach; ?>
+
+                </ul>
+
+            <?php else: ?>
+
+                <div class="alert alert-info mb-0">
+                    No hay archivos multimedia asociados a este siniestro.
+                </div>
+
+            <?php endif; ?>
+
         </div>
+
     </div>
 
     <a href="../view/panel.php" class="btn btn-outline-dark mb-4">Volver al Panel</a>
