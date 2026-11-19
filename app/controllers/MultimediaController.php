@@ -1,22 +1,13 @@
-
 <?php
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// =========================================
-// 1. VALIDAR SESIÓN
-// =========================================
-
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: ../view/InicioSesion.html");
     exit();
 }
-
-// =========================================
-// 2. INCLUIR MODELOS
-// =========================================
 
 require_once __DIR__ . '/../../config/conexion.php';
 require_once __DIR__ . '/../../model/Multimedia.php';
@@ -40,10 +31,6 @@ if (!$usuario) {
 $rol = $usuario['Rol'];
 
 $metodo = $_SERVER['REQUEST_METHOD'];
-
-// =========================================
-// 3. DESCARGAR ARCHIVO
-// =========================================
 
 if (
     $metodo === 'GET' &&
@@ -194,10 +181,6 @@ if (
 
 }
 
-// =========================================
-// 4. VALIDAR OPERACIONES POST
-// =========================================
-
 $idSiniestro = (int)($_POST['idSiniestro'] ?? 0);
 
 $opcion = (int)($_POST['opcion'] ?? 0);
@@ -239,10 +222,6 @@ try {
             "No tienes acceso a este siniestro."
         );
     }
-
-    // =====================================
-    // 5. SUBIR ARCHIVOS
-    // =====================================
 
     if ($opcion === 1) {
 
@@ -346,10 +325,6 @@ try {
 
     }
 
-    // =====================================
-    // 6. ELIMINAR ARCHIVOS
-    // =====================================
-
     elseif ($opcion === 3) {
 
         $idArchivo = (int)($_POST['idArchivo'] ?? 0);
@@ -397,10 +372,6 @@ try {
     $_SESSION['multimedia_error'] = $e->getMessage();
 
 }
-
-// =========================================
-// 7. REGRESAR AL SINIESTRO
-// =========================================
 
 $conexion->close();
 

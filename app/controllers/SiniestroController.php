@@ -1,4 +1,3 @@
-
 <?php
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -15,10 +14,6 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 try {
 
-    /* =========================
-       COMPROBAR SESIÓN
-    ========================= */
-
     if (!isset($_SESSION['usuario_id'])) {
         header("Location: ../view/InicioSesion.html");
         exit();
@@ -26,9 +21,6 @@ try {
 
     $idUsuario = (int) $_SESSION['usuario_id'];
 
-    /* =========================
-       OBTENER USUARIO
-    ========================= */
 
     $usuarioModel = new Usuario($conexion);
 
@@ -42,10 +34,6 @@ try {
         exit();
     }
 
-    /* =========================
-       COMPROBAR ROL
-    ========================= */
-
     $rol = $usuario['Rol'];
 
     $_SESSION['Rol'] = $rol;
@@ -55,15 +43,7 @@ try {
         exit();
     }
 
-    /* =========================
-       MODELOS
-    ========================= */
-
     $vehiculoModel = new Vehiculo($conexion);
-
-    /* =========================
-       GET: MOSTRAR FORMULARIO
-    ========================= */
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
@@ -74,10 +54,6 @@ try {
         exit();
     }
 
-    /* =========================
-       POST: REGISTRAR SINIESTRO
-    ========================= */
-
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         http_response_code(405);
         exit("Método no permitido.");
@@ -85,10 +61,6 @@ try {
 
     $siniestroModel = new Siniestro($conexion);
     $multimediaModel = new Multimedia($conexion);
-
-    /* =========================
-       RECIBIR DATOS
-    ========================= */
 
     $fecha = trim($_POST['fecha'] ?? '');
     $idVehiculo = (int) ($_POST['IdVehiculo'] ?? 0);
@@ -163,15 +135,7 @@ try {
         exit();
     }
 
-    /* =========================
-       INICIAR TRANSACCIÓN
-    ========================= */
-
     $conexion->begin_transaction();
-
-    /* =========================
-       DATOS DEL SINIESTRO
-    ========================= */
 
     $datos = [
         'opcion' => 1,
@@ -189,10 +153,6 @@ try {
     ];
 
     $idSiniestro = $siniestroModel->crear($datos);
-
-    /* =========================
-       GUARDAR MULTIMEDIA
-    ========================= */
 
     if ($archivos && !empty($archivos['name'][0])) {
 
@@ -240,10 +200,6 @@ try {
             );
         }
     }
-
-    /* =========================
-       CONFIRMAR
-    ========================= */
 
     $conexion->commit();
 
