@@ -140,10 +140,7 @@
 
 
 
-        <!-- =====================================
-            COMENTARIOS DEL SINIESTRO
-        ===================================== -->
-
+        <!--COMENTARIOS DEL SINIESTRO-->
         <div class="card mb-4 shadow-sm" id="comentarios">
 
             <div class="card-header bg-primary text-white">
@@ -265,10 +262,6 @@
         </div>
 
     </div>
-
-
-
-
     
     <!--Actualizar siniestros-->
     <?php if (in_array($usuario['Rol'], ['Supervisor', 'Ajustador'])): ?>
