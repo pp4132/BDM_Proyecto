@@ -164,7 +164,7 @@ try {
 
             $tamano = $archivos['size'][$key];
 
-            if ($tamano > 25 * 1024 * 1024) {
+            if ($tamano > 128 * 1024 * 1024) {
                 throw new Exception("Archivo demasiado grande.");
             }
 
