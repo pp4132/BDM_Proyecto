@@ -182,7 +182,7 @@ try {
   <!-- Lista de siniestros -->
   <h3 class="mb-3">Mis Siniestros</h3>
  <!-- FILTROS -->
-<div class="row mb-3">
+<!--<div class="row mb-3">
   <div class="col-md-3">
     <select class="form-select" id="filtroOrden">
       <option value="">Ordenar por</option>
@@ -199,7 +199,7 @@ try {
       <option value="cerrado">Cerrado</option>
     </select>
   </div>
-</div>
+</div>-->
 
 <!-- LISTA SINIESTROS -->
 <div class="row" id="listaSiniestros">
@@ -260,14 +260,13 @@ try {
         </div>
 
     <?php endforeach; ?>
+    <?php else: ?>
 
-<?php else: ?>
+        <div class="alert alert-info">
+            No hay siniestros registrados.
+        </div>
 
-    <div class="alert alert-info">
-        No hay siniestros registrados.
-    </div>
-
-<?php endif; ?>
+    <?php endif; ?>
 
 </div>
 
@@ -326,14 +325,13 @@ try {
         </div>
 
     <?php endforeach; ?>
+    <?php else: ?>
 
-<?php else: ?>
+        <div class="alert alert-info">
+            No hay vehículos registrados.
+        </div>
 
-    <div class="alert alert-info">
-        No hay vehículos registrados.
-    </div>
-
-<?php endif; ?>
+    <?php endif; ?>
 
 <hr>
 

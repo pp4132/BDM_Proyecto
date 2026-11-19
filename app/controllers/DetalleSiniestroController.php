@@ -15,11 +15,6 @@ require_once __DIR__ . '/../../model/Comentario.php';
 
 
 try {
-
-    // =========================================
-    // 1. VALIDAR SESIÓN
-    // =========================================
-
     if (!isset($_SESSION['usuario_id'])) {
 
         header("Location: ../view/InicioSesion.html");
@@ -28,13 +23,7 @@ try {
     }
 
     $idUsuario = (int) $_SESSION['usuario_id'];
-
-    // =========================================
-    // 2. OBTENER USUARIO
-    // =========================================
-
     $usuarioModel = new Usuario($conexion);
-
     $usuario = $usuarioModel->obtenerPorId($idUsuario);
 
     if (!$usuario) {
@@ -47,10 +36,6 @@ try {
         exit();
 
     }
-
-    // =========================================
-    // 3. VALIDAR ROL
-    // =========================================
 
     $rol = $usuario['Rol'];
 
@@ -67,10 +52,6 @@ try {
 
     $_SESSION['Rol'] = $rol;
 
-    // =========================================
-    // 4. VALIDAR ID DEL SINIESTRO
-    // =========================================
-
     $idSiniestro = filter_input(
         INPUT_GET,
         'id',
@@ -84,10 +65,6 @@ try {
 
     }
 
-    // =========================================
-    // 5. INICIALIZAR MODELOS
-    // =========================================
-
     $siniestroModel = new Siniestro($conexion);
 
     $multimediaModel = new Multimedia($conexion);
@@ -95,10 +72,6 @@ try {
     $reparacionModel = new Reparacion($conexion);
 
     $comentarioModel = new Comentario($conexion);
-
-    // =========================================
-    // 6. OBTENER DETALLE DEL SINIESTRO
-    // =========================================
 
     $siniestro = $siniestroModel->obtenerDetalle(
         $idSiniestro,
@@ -113,10 +86,6 @@ try {
 
     }
 
-    // =========================================
-    // 7. GENERAR TOKEN CSRF
-    // =========================================
-
     if (empty($_SESSION['comentario_csrf'])) {
 
         $_SESSION['comentario_csrf'] = bin2hex(
@@ -124,10 +93,6 @@ try {
         );
 
     }
-
-    // =========================================
-    // 8. REGISTRAR COMENTARIO
-    // =========================================
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -192,42 +157,21 @@ try {
 
     }
 
-    // =========================================
-    // 9. LISTAR MULTIMEDIA
-    // =========================================
-
     $archivos = $multimediaModel->listarPorSiniestro(
         $idSiniestro
     );
-
-    // =========================================
-    // 10. LISTAR REPARACIONES
-    // =========================================
-
     $reparacionesArray = $reparacionModel->listarPorSiniestro(
         $idSiniestro
     );
-
-    // =========================================
-    // 11. CONTAR COMENTARIOS
-    // =========================================
 
     $totalComentarios = $siniestroModel->contarComentarios(
         $idSiniestro
     );
 
-    // =========================================
-    // 12. LISTAR COMENTARIOS
-    // =========================================
-
     $comentariosArray =
         $comentarioModel->listarPorSiniestro(
             $idSiniestro
         );
-
-    // =========================================
-    // 13. CARGAR VISTA
-    // =========================================
 
     require __DIR__ . '/../view/Siniestros.php';
 

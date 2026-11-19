@@ -88,9 +88,7 @@ try {
         $errores[] = "Fecha inválida.";
     }
 
-    /* =========================
-       VALIDAR VEHÍCULO
-    ========================= */
+    /*VALIDAR VEHÍCULO*/
 
     if ($idVehiculo > 0) {
 
@@ -99,9 +97,7 @@ try {
         }
     }
 
-    /* =========================
-       VALIDAR ARCHIVOS
-    ========================= */
+    /*VALIDAR ARCHIVOS*/
 
     $archivos = $_FILES['archivos'] ?? null;
 
